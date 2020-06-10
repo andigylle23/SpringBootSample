@@ -12,4 +12,4 @@
 ### How to access the temp H2 databse
 1. Access in your browser http://localhost:8080/h2
 2. Then click the Connect button
-3. It should show the console page of the h2 database
+3. It should show the console page of the h2 database which will have a database for BOOKS (check the src/main/resources/data.sql for more info)
