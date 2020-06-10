@@ -11,6 +11,6 @@ public class SimpleController {
 	
 	@GetMapping("/")
 	public  String homeDisplay() {		
-		return "home";
+		return "index";
 	}
 }
