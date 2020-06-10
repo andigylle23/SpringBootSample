@@ -12,4 +12,23 @@
 ### How to access the temp H2 databse
 1. Access in your browser http://localhost:8080/h2
 2. Then click the Connect button
-3. It should show the console page of the h2 database which will have a database for BOOKS (check the src/main/resources/data.sql for more info)
+3. It should show the console page of the h2 database where the database is auto created via Entity annotations
+
+### How to access via api/postman
+1. Start the spring app
+2. Then open your postman
+
+For **POST** request
+URL: `http://localhost:8080/books`
+
+JSON:
+`{
+    "code":"00001",
+    "title":"Book Title"
+}`
+
+For **GET** request
+**Get all books**, URL: `http://localhost:8080/books`
+**Get book by id**, URL: `http://localhost:8080/books/{id}`
+
+
