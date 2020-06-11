@@ -10,8 +10,8 @@ public class Books {
 	@Id
 	@GeneratedValue
 	private int id;
-	private String code;
 	private String title;
+	private String author;
 	
 	
 	// getters
@@ -19,21 +19,21 @@ public class Books {
 		return id;
 	}
 	
-	public String getCode() {
-		return code;
-	}
-	
 	public String getTitle() {
 		return title;
 	}
 	
-	// setters
-	public void setCode(String code) {
-		this.code = code;
+	public String getAuthor() {
+		return author;
 	}
 	
-	public void setBookTitle(String title) {
+	// setters
+	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 }
