@@ -52,5 +52,8 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
+# Not sure what this all about
+.tern-project
+
 
 
