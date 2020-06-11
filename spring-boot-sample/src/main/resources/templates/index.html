@@ -7,14 +7,13 @@
 		<h2>Search For A Book</h2>
            <div id="custom-search-input">
            		<div class="input-group col-md-12">
-                     <input type="text" class="search-query form-control" id="myInput" onkeyup="myFunction()" placeholder="Search" />
+                     <input type="text" class="search-query form-control" id="searchInput" onkeyup="myFunction()" placeholder=" Search for book title only" />
                 </div>
            </div>
 	</div>
 </div>
 
 <div class="container">
-<h1></h1>
     	<div class="row">
 			<div class="col-md-13">
 				<div class="panel panel-primary">
@@ -43,7 +42,7 @@
 	<script>
 		function myFunction() {
   			var input, filter, table, tr, td, i, txtValue;
-  			input = document.getElementById("myInput");
+  			input = document.getElementById("searchInput");
   			filter = input.value.toUpperCase();
   			table = document.getElementById("book-table");
   			tr = table.getElementsByTagName("tr");
