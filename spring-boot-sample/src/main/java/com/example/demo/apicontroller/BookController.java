@@ -1,10 +1,14 @@
 package com.example.demo.apicontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Books;
 import com.example.demo.service.BookService;
@@ -16,19 +20,13 @@ public class BookController {
 	
 	private BookService bookService;
 	
-	@Autowired
 	public BookController(BookService bookService) {
 		this.bookService = bookService;
 	}
 	
-	
 	@RequestMapping(method = RequestMethod.GET)
 	private List<Books> getAllBooks() {
-		
-		if(bookService.getAllBooks() == null) {
-			
-		}
-		return bookService.getAllBooks();
+		return bookService.getAllBooks() ;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -37,15 +35,17 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	private void deleteBook(@PathVariable("id") int id) {
+	private ResponseEntity<String> deleteBook(@PathVariable("id") int id) {
 		bookService.deleteBook(id);
+		
+		return new ResponseEntity<>("Successfully deleted a book", HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	private int saveBook(@RequestBody Books book) {
+	private ResponseEntity<String> saveBook(@RequestBody Books book) {
 		bookService.saveOrUpdate(book);
 		
-		return book.getId();
+		return new ResponseEntity<>("Successfully register a book", HttpStatus.OK);
 	}
 
 }

@@ -3,7 +3,6 @@ package com.example.demo.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableLoadTimeWeaving;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.BookRepository;
@@ -16,7 +15,6 @@ public class BookService {
 	
 	private BookRepository bookRepository;
 	
-	@Autowired
 	public BookService(BookRepository bookRepository) {
 		this.bookRepository = bookRepository;
 	}

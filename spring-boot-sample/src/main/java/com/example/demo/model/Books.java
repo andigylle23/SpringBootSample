@@ -36,8 +36,4 @@ public class Books {
 		this.title = title;
 	}
 	
-	public Books(String code, String title) {
-		this.code = code;
-		this.title = title;
-	}
 }
