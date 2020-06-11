@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +33,11 @@ public class Books {
 	}
 	
 	public void setBookTitle(String title) {
+		this.title = title;
+	}
+	
+	public Books(String code, String title) {
+		this.code = code;
 		this.title = title;
 	}
 }
