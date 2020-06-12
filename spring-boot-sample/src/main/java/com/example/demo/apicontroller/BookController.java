@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.model.Books;
-import com.example.demo.service.BookRepository;
+import com.example.demo.repository.BookRepository;
 
 import java.util.List;
 
@@ -67,6 +67,7 @@ public class BookController {
 		if(books != null) {
 			throw new ResourceNotFoundException("The same book title already exists ");
 		} 
+		
 		
 		return  bookRepository.save(book);
 	}
