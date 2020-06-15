@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link th:href="@{/css/book.css}" rel="stylesheet" />
+	<script type="text/javascript" th:src="@{/js/book.js}"></script>
 </head>
 
 <!------ Include the above in your HEAD tag ---------->
@@ -14,14 +15,10 @@
 		<h2>本の検索</h2>
            <div id="custom-search-input">
            		<div class="input-group col-md-12">
-                     <input type="text" class="search-query form-control" id="searchInput" onkeyup="myFunction()" placeholder="　本のタイトルだけを入力してください" />
+                     <input type="text" class="search-query form-control" id="searchInput" onkeyup="searchFunction()" placeholder="　本のタイトルだけを入力してください" />
                 </div>
            </div>
 	</div>
-</div>
-
-<div class="container">
-	
 </div>
 
 <div class="container">
@@ -29,8 +26,7 @@
 			<div class="col-md-13">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<h3 class="panel-title">登録図書 	
-						</h3>
+						<h3 class="panel-title">登録図書 	</h3>
 					</div>    						
 					<table class="table table-hover" id="book-table">
 						<thead>
@@ -56,28 +52,6 @@
 			</div>
 		</div>
 	</div>
-
-	<script>
-		function myFunction() {
-  			var input, filter, table, tr, td, i, txtValue;
-  			input = document.getElementById("searchInput");
-  			filter = input.value.toUpperCase();
-  			table = document.getElementById("book-table");
-  			tr = table.getElementsByTagName("tr");
-
-  		  		for (i = 0; i < tr.length; i++) {
-    				td = tr[i].getElementsByTagName("td")[0];
-    			if (td) {
-      				txtValue = td.textContent || td.innerText;
-      			if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        			tr[i].style.display = "";
-      			} else {
-        			tr[i].style.display = "none";
-      			}
-    		}       
-  		}
-	}
-	</script>
 </body>
 </html>
 	
