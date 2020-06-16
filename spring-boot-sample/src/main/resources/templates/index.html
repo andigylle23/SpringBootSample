@@ -2,58 +2,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<link th:href="@{/css/book.css}" rel="stylesheet" />
-	<script type="text/javascript" th:src="@{/js/book.js}"></script>
+<meta charset="UTF-8">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link th:href="@{/css/book.css}" rel="stylesheet" />
+<script type="text/javascript" th:src="@{/js/book.js}"></script>
 </head>
 
 <!------ Include the above in your HEAD tag ---------->
 <body>
-<div class="container">
-	<div class="row">
-		<h2>本の検索</h2>
-           <div id="custom-search-input">
-           		<div class="input-group col-md-12">
-                     <input type="text" class="search-query form-control" id="searchInput" onkeyup="searchFunction()" placeholder="　本のタイトルだけを入力してください" />
-                </div>
-           </div>
+	<div class="container">
+		<div class="row">
+			<h2>本の検索</h2>
+			<div id="custom-search-input">
+				<div class="input-group col-md-12">
+					<input type="text" class="search-query form-control"
+						id="searchInput" onkeyup="searchFunction()"
+						placeholder="　本のタイトルだけを入力してください" />
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-<div class="container">
-    	<div class="row">
-			<div class="col-md-13">
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">登録図書 	</h3>
-					</div>    						
-					<table class="table table-hover" id="book-table">
-						<thead>
-							<tr>
-								<th>タイトル</th>
-								<th>作者</th>
-								<th>行動</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each = "book: ${book}">
-        						<td th:text="${book.title}"></td>
-        						<td th:text="${book.author}"></td>
-        						<td>
-        							<a th:href="@{/delete/{title}(title=${book.title})}" class="btn btn-danger">
-       									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>            
-    								</a>
-        						</td>
-    						</tr>
-						</tbody>
-					</table>
+	<div class="container">
+		<div class="panel panel-default panel-table">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col col-xs-6">
+						<h3 class="panel-title">本の一覧</h3>
+					</div>
+					<div class="col col-xs-6 text-right">
+						<button type="button" class="btn btn-sm btn-primary btn-create">追加する</button>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped table-bordered table-list" id="book-table">
+					<thead>
+						<tr>
+							<th><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+							</th>
+							<th>タイトル</th>
+							<th>作者</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="book: ${book}">
+							<td align="center"><a
+								th:href="@{/books/delete/{title}(title=${book.title})}"
+								class="btn btn-danger"> <span
+									class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+							</a></td>
+							<td th:text="${book.title}"></td>
+							<td th:text="${book.author}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col col-xs-8">
+						<div th:if="${book.totalPages > 0}" class="pagination "
+							th:each="pageNumber : ${pageNumbers}">
+							<ul class="pagination">
+								<li><a
+									th:href="@{/books/(size=${book.size}, page=${pageNumber})}"
+									th:text=${pageNumber}
+									th:class="${pageNumber==book.number + 1} ? active"></a></li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
 </html>
-	
-	
-	
+
+

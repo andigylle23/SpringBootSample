@@ -13,7 +13,6 @@ public class Books {
 	private String title;
 	private String author;
 	
-	
 	// getters
 	public int getId() {
 		return id;
