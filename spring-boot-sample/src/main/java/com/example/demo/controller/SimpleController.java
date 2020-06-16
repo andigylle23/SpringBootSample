@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,7 @@ public class SimpleController {
 
 	// 初期化
 	private final BookService bookService;
+	private final static Logger logger = LoggerFactory.getLogger(SimpleController.class);
 
 	// コンストラクタ
 	public SimpleController(BookService bookService) {
@@ -47,9 +51,16 @@ public class SimpleController {
 		// totalPagesが０より大きいの場合：
 		if (totalPages > 0) {
 			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			logger.error("An ERROR Message");
 			// UIのパラメータに対応する
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
+		
+        logger.trace("A TRACE Message");
+        logger.debug("A DEBUG Message");
+        logger.info("An INFO Message");
+        logger.warn("A WARN Message");
+        
 
 		// ページの名前の呼ぶ
 		return "index";
