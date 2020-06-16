@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-//This annotation is used to mark a configuration class that declare one or more
+// This annotation is used to mark a configuration class that declare one or more
 // @Bean methods and also triggers auto-configuration and component scanning.
 @SpringBootApplication
 @EnableJpaRepositories("com.example.demo.repository")

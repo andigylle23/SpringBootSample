@@ -16,47 +16,58 @@ import com.example.demo.exceptions.ResourceNotFoundException;
 import com.example.demo.model.Books;
 import com.example.demo.service.BookService;
 
-
-// For UI purpose
+// UIに対応する
 @Controller
 public class SimpleController {
 
+	// 初期化
 	private final BookService bookService;
-	
+
+	// コンストラクタ
 	public SimpleController(BookService bookService) {
 		this.bookService = bookService;
 	}
-	
+
+	// GETのメソッドとページネーションの対応
 	@GetMapping("/books")
-	public  String homeDisplay(Model model,  @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+	public String homeDisplay(Model model, @RequestParam("page") Optional<Integer> page,
+			@RequestParam("size") Optional<Integer> size) {
+		// ページとサイズの設定する
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(5);
-		
+
 		Page<Books> bookPage = bookService.findPaginatedPage(PageRequest.of(currentPage - 1, pageSize));
-		
+
+		// UIのパラメータに対応する
 		model.addAttribute("book", bookPage);
-		
-		int totalPages  = bookPage.getTotalPages();
-		if(totalPages > 0) {
-			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-					.boxed()
-					.collect(Collectors.toList());
+
+		// 全ページの数える
+		int totalPages = bookPage.getTotalPages();
+		// totalPagesが０より大きいの場合：
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			// UIのパラメータに対応する
 			model.addAttribute("pageNumbers", pageNumbers);
 		}
+
+		// ページの名前の呼ぶ
 		return "index";
 	}
-	
+
+	// 削除のAPI
 	@GetMapping("books/delete/{title}")
 	private String deleteBook(@PathVariable("title") String title) throws ResourceNotFoundException {
-		
+		//　サービスクラスのdeleteBookByTitle
 		bookService.deleteBookByTitle(title);
-		
+
+		// APIのリダイレクト
 		return "redirect:/books";
 	}
-	
+
+	// "/"の入力するの場合、/bookｓのAPIリダイレクト
 	@GetMapping("/")
 	private String redirectToBookLink() {
 		return "redirect:/books";
 	}
-	
+
 }

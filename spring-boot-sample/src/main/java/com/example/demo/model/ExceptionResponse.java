@@ -1,11 +1,13 @@
 package com.example.demo.model;
 
+// APIのエラーのモデル
 public class ExceptionResponse {
 	
 	private String errorMessage;
 	private String requestedURI;
 	private String requestMethod;
 	
+	//　ゲッター
 	public String getErrorMessage() {
 		return errorMessage;
 	}
@@ -18,6 +20,7 @@ public class ExceptionResponse {
 		return requestMethod;
 	}
 	
+	// セーター
 	public void setErrorMessage(final String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
