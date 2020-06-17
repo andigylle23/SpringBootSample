@@ -12,7 +12,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -88,4 +90,21 @@ public class SimpleController {
 		return "error";
 	}
 
+	// Mapping the mode of the book
+	@GetMapping("/books/register")
+	public String goToRegisterPage(Model model) {
+		Books book = new Books();
+		model.addAttribute("book", book);
+		
+		return "register";
+	}
+	
+	// Register a book
+	@PostMapping("/books/register")
+	public String submitForm(@ModelAttribute("book") Books book) {
+
+	    bookService.addBook(book);
+	    
+	    return "redirect:/books";
+	}
 }

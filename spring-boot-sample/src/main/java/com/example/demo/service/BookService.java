@@ -73,4 +73,9 @@ public class BookService {
 		return bookPage;
 
 	}
+	
+	// TODO: It should throw an error if the title is already exists
+	public Books addBook(Books book) {
+		return bookRepository.save(book);
+	}
 }
