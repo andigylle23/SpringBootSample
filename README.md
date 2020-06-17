@@ -4,9 +4,16 @@ Eclipse
 
 ### How to run
 
+#### For spring-boot-using-temp-db branch
+
 1. You need go to the spring-boot-sample folder
 2. In your terminal, do the mvn clean install
 3. Then mvn clean spring-boot:run
+
+#### For develop branch
+1. You need to install mysql server
+2. In the application.properties, updated it based on your settings
+3. The do mvn clean spring-boot:run
 
 
 ### How to access
