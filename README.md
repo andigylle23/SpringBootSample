@@ -12,7 +12,7 @@ There are two profiles
   - development
   - temporary (use this if you dont have mysql setup)
   
-1. In your terminal, input `mvn spring-boot:run -Dmy.active.spring.profiles=development`
+1. In your terminal, input `mvn spring-boot:run -Dprofile=development`
 
 ### How to access the temp H2 databse (when running the temporary profile)
 1. Access in your browser http://localhost:8080/h2
