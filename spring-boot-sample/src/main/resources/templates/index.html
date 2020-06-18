@@ -50,8 +50,11 @@
 						<tr>
 							<th><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 							</th>
+							<th>BarCode</th>
 							<th>タイトル</th>
 							<th>作者</th>
+							<th>Date Created</th>
+							<th>Date Updated</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,8 +64,11 @@
 								class="btn btn-danger"> <span
 									class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</a></td>
+							<td th:text="${book.barcode}"></td>
 							<td th:text="${book.title}"></td>
 							<td th:text="${book.author}"></td>
+							<td th:text="${book.date_created}"></td>
+							<td th:text="${book.date_updated}"></td>
 						</tr>
 					</tbody>
 				</table>
