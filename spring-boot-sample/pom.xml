@@ -85,7 +85,7 @@
 			<id>spring-profile-active</id>
 			<activation>
 				<property>
-					<name>my.active.spring.profiles</name>
+					<name>profile</name>
 				</property>
 			</activation>
 			<build>
@@ -95,7 +95,7 @@
 						<artifactId>spring-boot-maven-plugin</artifactId>
 						<configuration>
 							<profiles>
-								<profile>${my.active.spring.profiles}</profile>
+								<profile>${profile}</profile>
 							</profiles>
 						</configuration>
 					</plugin>
