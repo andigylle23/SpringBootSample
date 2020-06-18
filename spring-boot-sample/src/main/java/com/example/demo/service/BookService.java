@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -45,6 +46,7 @@ public class BookService {
 		return bookRepository.findAll();
 
 	}
+	
 
 	// ページネーション
 	public Page<Books> findPaginatedPage(Pageable pageable) {
@@ -76,6 +78,9 @@ public class BookService {
 	
 	// TODO: It should throw an error if the title is already exists
 	public Books addBook(Books book) {
+
+		book.setDate_created(new Date());
+		book.setDate_updated(new Date());
 		return bookRepository.save(book);
 	}
 }

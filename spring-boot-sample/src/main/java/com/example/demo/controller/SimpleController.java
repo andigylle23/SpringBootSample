@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -69,8 +70,9 @@ public class SimpleController {
 	}
 
 	// 削除のAPI
-	@GetMapping("books/delete/{title}")
+	@GetMapping("/books/delete/{title}")
 	private String deleteBook(@PathVariable("title") String title) throws ResourceNotFoundException {
+		
 		// サービスクラスのdeleteBookByTitle
 		bookService.deleteBookByTitle(title);
 
@@ -102,7 +104,6 @@ public class SimpleController {
 	// Register a book
 	@PostMapping("/books/register")
 	public String submitForm(@ModelAttribute("book") Books book) {
-
 	    bookService.addBook(book);
 	    
 	    return "redirect:/books";
