@@ -1,17 +1,12 @@
-package com.example.demo.controller;
+package com.example.demo.apicontroller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.model.Employee;
 import com.example.demo.service.EmployeeService;
-
 import javassist.NotFoundException;
-import javassist.expr.NewArray;
 
 @Controller
 public class EmployeeController {
@@ -21,25 +16,7 @@ public class EmployeeController {
 	public EmployeeController(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
-	
-	// Mapping the mode of the book
-	@GetMapping("/")
-	public String goToRegisterPage(Model model) {
-		Employee employee = new Employee();
-		model.addAttribute("employee",employee);
-		
-		return "register";
-	}
-	
-	@GetMapping("/home")
-	public String goToHomePagePage() {
-		return "index";
-	}
-	@GetMapping("/notfound")
-	public String goToNotFound() {
-		return "error";
-	}
-	
+
 	@PostMapping("/login")
 	public String loginUser(@ModelAttribute("employee") Employee employee) throws NotFoundException  {
 		
@@ -52,5 +29,16 @@ public class EmployeeController {
 		}
 		
 		return "redirect:/home";
+	}
+	
+	@PostMapping("/register")
+	public String registerUser(@ModelAttribute("employee") Employee employee) {
+		String status = employeeService.registerEmployee(employee);
+		
+		if(status == "exists") {
+			return "redirect:/notfound";
+		}
+		
+		return "redirect:/";
 	}
 }

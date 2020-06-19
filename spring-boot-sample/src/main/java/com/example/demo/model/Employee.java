@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
-import java.sql.Date;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,25 +9,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee")
 public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String employee_id;
+	private String employeeId;
 	private String username;
 	private String password;
-	private Date date_created;
-	private Date date_updated;
+	private Date dateCreated;
+	private Date dateUpdated;
 	
 	// Getters
 	public int getId() {
 		return id;
 	}
 	
-	public String getEmployee_id() {
-		return employee_id;
+	public String getEmployeeId() {
+		return employeeId;
 	}
 
 	public String getUsername() {
@@ -37,18 +37,18 @@ public class Employee {
 		return password;
 	}
 	
-	public Date getDate_created() {
-		return date_created;
+	public Date getDateCreated() {
+		return dateCreated;
 	}
 	
-	public Date getDate_updated() {
-		return date_updated;
+	public Date getDateUpdated() {
+		return dateUpdated;
 	}
 	
 	
 	// Setters
-	public void setEmployee_id(String employee_id) {
-		this.employee_id = employee_id;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 	
 	public void setUsername(String username) {
@@ -59,11 +59,11 @@ public class Employee {
 		this.password = password;
 	}
 	
-	public void setDate_created(Date date_created) {
-		this.date_created = date_created;
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 	
-	public void setDate_updated(Date date_updated) {
-		this.date_updated = date_updated;
+	public void setDateUpdated(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
 	}
 }

@@ -19,10 +19,15 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2>ログインする</h2>
+			<h2>ユーザー登録する</h2>
 			<div class="col-md-10">
-				<form action="#" th:action="@{/login}" method="post"
+				<form action="#" th:action="@{/register}" method="post"
 					th:object="${employee}">
+					<div class="form-group">
+						<label for="title">Employee ID：</label> <input type="text"
+							class="form-control" id="password" th:field="*{employeeId}"
+							placeholder="Please input your employee Id">
+					</div>
 					<div class="form-group">
 						<label for="author">ユーザー名：</label> <input type="text"
 							class="form-control" id="username" th:field="*{username}"
@@ -33,8 +38,8 @@
 							class="form-control" id="password" th:field="*{password}"
 							placeholder="パスワードを入力してください">
 					</div>
-					<button type="submit" class="btn btn-primary" id="register">Login</button>
-					<a th:href="@{/}" class="btn btn-info btn-lg" id="back">Register</a>
+					<button type="submit" class="btn btn-primary" id="register">登録する</button>
+					<a th:href="@{/}" class="btn btn-info btn-lg" id="back">ログイン画面に戻る</a>
 				</form>
 			</div>
 		</div>

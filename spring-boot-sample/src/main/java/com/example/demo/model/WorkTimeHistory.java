@@ -13,55 +13,55 @@ public class WorkTimeHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private int id;
-	private String employee_id;
-	private Date clocked_in;
-	private Date clocked_out;
-	private Date date_created;
-	private Date date_updated;
+	private String employeeId;
+	private Date clockedIn;
+	private Date clockedOut;
+	private Date dateCreated;
+	private Date dateUpdated;
 	
 	// Getters
 	public int getId() {
 		return id;
 	}
 	
-	public String getEmployee_id() {
-		return employee_id;
+	public String getEmployeeId() {
+		return employeeId;
 	}
 	
-	public Date getClocked_in() {
-		return clocked_in;
+	public Date getClockedIn() {
+		return clockedIn;
 	}
 	
-	public Date getClocked_out() {
-		return clocked_out;
+	public Date getClockedOut() {
+		return clockedOut;
 	}
 	
-	public Date getDate_created() {
-		return date_created;
+	public Date getDateCreated() {
+		return dateCreated;
 	}
 	
-	public Date getDate_updated() {
-		return date_updated;
+	public Date getDateUpdated() {
+		return dateUpdated;
 	}
 	
 	// Setters
-	public void setEmployee_id(String employee_id) {
-		this.employee_id = employee_id;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 	
-	public void setClocked_in(Date clocked_in) {
-		this.clocked_in = clocked_in;
+	public void setClockedIn(Date clockedIn) {
+		this.clockedIn = clockedIn;
 	}
 	
-	public void setClocked_out(Date clocked_out) {
-		this.clocked_out = clocked_out;
+	public void setClockedOut(Date clockedOut) {
+		this.clockedOut = clockedOut;
 	}
 	
-	public void setDate_created(Date date_created) {
-		this.date_created = date_created;
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 	
-	public void setDate_updated(Date date_updated) {
-		this.date_updated = date_updated;
+	public void setDateUpdated(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
 	}
 }
