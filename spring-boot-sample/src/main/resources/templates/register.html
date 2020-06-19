@@ -19,27 +19,22 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h2>本の登録</h2>
+			<h2>Sign in</h2>
 			<div class="col-md-10">
 				<form action="#" th:action="@{/books/register}" method="post"
-					th:object="${book}">
+					th:object="${employee}">
 					<div class="form-group">
-						<label for="author">Barcode：</label> <input type="text"
-							class="form-control" id="barcode" th:field="*{barcode}"
-							placeholder="Barcode">
+						<label for="author">username：</label> <input type="text"
+							class="form-control" id="username" th:field="*{username}"
+							placeholder="Enter your username">
 					</div>
 					<div class="form-group">
-						<label for="title">本のタイトル名：</label> <input type="text"
-							class="form-control" id="title" th:field="*{title}"
-							placeholder="Book title">
+						<label for="title">password：</label> <input type="text"
+							class="form-control" id="password" th:field="*{password}"
+							placeholder="Enter your password">
 					</div>
-					<div class="form-group">
-						<label for="author">本の作者：</label> <input type="text"
-							class="form-control" id="author" th:field="*{author}"
-							placeholder="Author">
-					</div>
-					<button type="submit" class="btn btn-primary" 　id="register">登録する</button>
-					<a th:href="@{/books}" class="btn btn-info btn-lg" id="back">ホームページに戻る</a>
+					<button type="submit" class="btn btn-primary" 　id="register">Login</button>
+					<a th:href="@{/}" class="btn btn-info btn-lg" id="back">Register</a>
 				</form>
 			</div>
 		</div>
