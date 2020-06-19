@@ -1,39 +1,39 @@
 package com.example.demo.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-// データベーステーブルにマップする
-public class Books {
-
+@Entity
+public class WorkTimeHistory {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private int id;
-	private String barcode;
-	private String title;
-	private String author;
+	private String employee_id;
+	private Date clocked_in;
+	private Date clocked_out;
 	private Date date_created;
 	private Date date_updated;
-
-	// ゲッター
+	
+	// Getters
 	public int getId() {
 		return id;
 	}
 	
-	public String getBarcode() {
-		return barcode;
+	public String getEmployee_id() {
+		return employee_id;
 	}
-
-	public String getTitle() {
-		return title;
+	
+	public Date getClocked_in() {
+		return clocked_in;
 	}
-
-	public String getAuthor() {
-		return author;
+	
+	public Date getClocked_out() {
+		return clocked_out;
 	}
 	
 	public Date getDate_created() {
@@ -43,18 +43,18 @@ public class Books {
 	public Date getDate_updated() {
 		return date_updated;
 	}
-
-	// セーター
-	public void setBarcode(String barcode) {
-		this.barcode = barcode;
+	
+	// Setters
+	public void setEmployee_id(String employee_id) {
+		this.employee_id = employee_id;
 	}
 	
-	public void setTitle(String title) {
-		this.title = title;
+	public void setClocked_in(Date clocked_in) {
+		this.clocked_in = clocked_in;
 	}
-
-	public void setAuthor(String author) {
-		this.author = author;
+	
+	public void setClocked_out(Date clocked_out) {
+		this.clocked_out = clocked_out;
 	}
 	
 	public void setDate_created(Date date_created) {
@@ -64,5 +64,4 @@ public class Books {
 	public void setDate_updated(Date date_updated) {
 		this.date_updated = date_updated;
 	}
-
 }

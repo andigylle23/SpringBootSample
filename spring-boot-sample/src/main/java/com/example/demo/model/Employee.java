@@ -1,39 +1,38 @@
 package com.example.demo.model;
 
-import java.util.Date;
-
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-// データベーステーブルにマップする
-public class Books {
-
+@Entity
+public class Employee {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String barcode;
-	private String title;
-	private String author;
+	private String employee_id;
+	private String username;
+	private String password;
 	private Date date_created;
 	private Date date_updated;
-
-	// ゲッター
+	
+	// Getters
 	public int getId() {
 		return id;
 	}
 	
-	public String getBarcode() {
-		return barcode;
+	public String getEmployee_id() {
+		return employee_id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getUsername() {
+		return username;
 	}
-
-	public String getAuthor() {
-		return author;
+	
+	public String getPassword() {
+		return password;
 	}
 	
 	public Date getDate_created() {
@@ -43,18 +42,19 @@ public class Books {
 	public Date getDate_updated() {
 		return date_updated;
 	}
-
-	// セーター
-	public void setBarcode(String barcode) {
-		this.barcode = barcode;
+	
+	
+	// Setters
+	public void setEmployee_id(String employee_id) {
+		this.employee_id = employee_id;
 	}
 	
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-	public void setAuthor(String author) {
-		this.author = author;
+	
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	public void setDate_created(Date date_created) {
@@ -64,5 +64,4 @@ public class Books {
 	public void setDate_updated(Date date_updated) {
 		this.date_updated = date_updated;
 	}
-
 }
