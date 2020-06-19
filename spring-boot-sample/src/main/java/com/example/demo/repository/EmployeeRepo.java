@@ -5,4 +5,5 @@ import com.example.demo.model.Employee;
 
 public interface EmployeeRepo extends CrudRepository<Employee, Integer>{
 	
+	Employee findByUsername(String username);
 }

@@ -35,4 +35,6 @@ CREATE TABLE work_time_history (
   date_updated  DATETIME,
   PRIMARY KEY (id)
 );
+
+INSERT INTO employee(employee_id, username, password, date_created, date_updated) VALUES ('3615', 'admin', '1234', now(), now());
 	
