@@ -17,7 +17,7 @@ public class EmployeeService {
 	}
 	
 	
-	public String findEmployee(String username, String password) throws NotFoundException {
+	public String loginUser(String username, String password) throws NotFoundException {
 		Employee newEmployee = employeeRepo.findByUsername(username);
 		String employee_id = null;
 		

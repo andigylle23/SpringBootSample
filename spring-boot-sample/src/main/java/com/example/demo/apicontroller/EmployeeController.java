@@ -20,7 +20,7 @@ public class EmployeeController {
 	@PostMapping("/login")
 	public String loginUser(@ModelAttribute("employee") Employee employee) throws NotFoundException  {
 		
-		String exists = employeeService.findEmployee(employee.getUsername(), employee.getPassword());
+		String exists = employeeService.loginUser(employee.getUsername(), employee.getPassword());
 		
 		if(exists == null || exists.isEmpty()) {
 			return "redirect:/notfound";

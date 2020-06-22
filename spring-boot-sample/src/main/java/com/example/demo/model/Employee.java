@@ -17,6 +17,7 @@ public class Employee {
 	private String employeeId;
 	private String username;
 	private String password;
+	private String email;
 	private Date dateCreated;
 	private Date dateUpdated;
 	
@@ -37,6 +38,9 @@ public class Employee {
 		return password;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
 	public Date getDateCreated() {
 		return dateCreated;
 	}
@@ -57,6 +61,10 @@ public class Employee {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	public void setDateCreated(Date dateCreated) {

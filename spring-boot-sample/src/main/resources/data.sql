@@ -8,6 +8,7 @@ CREATE TABLE employee (
   employee_id VARCHAR(250) NOT NULL,
   username VARCHAR(250) NOT NULL,
   password VARCHAR(250) NOT NULL,
+  email VARCHAR(250) NOT NULL,
   date_created  DATETIME,
   date_updated  DATETIME,
   PRIMARY KEY (id)
@@ -36,5 +37,5 @@ CREATE TABLE work_time_history (
   PRIMARY KEY (id)
 );
 
-INSERT INTO employee(employee_id, username, password, date_created, date_updated) VALUES ('3615', 'admin', '1234', now(), now());
+INSERT INTO employee(employee_id, username, password, email, date_created, date_updated) VALUES ('3615', 'admin', '1234','kyrie@totaloa.co.jp',  now(), now());
 	

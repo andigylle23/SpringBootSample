@@ -29,14 +29,19 @@
 							placeholder="Please input your employee Id">
 					</div>
 					<div class="form-group">
-						<label for="author">ユーザー名：</label> <input type="text"
+						<label for="username">ユーザー名：</label> <input type="text"
 							class="form-control" id="username" th:field="*{username}"
 							placeholder="ユーザー名を入力してください">
 					</div>
 					<div class="form-group">
-						<label for="title">パスポート：</label> <input type="password"
+						<label for="password">パスポート：</label> <input type="password"
 							class="form-control" id="password" th:field="*{password}"
 							placeholder="パスワードを入力してください">
+					</div>
+					<div class="form-group">
+						<label for="author">メールアドレス：</label> <input type="text"
+							class="form-control" id="email" th:field="*{email}"
+							placeholder="メールを入力してください">
 					</div>
 					<button type="submit" class="btn btn-primary" id="register">登録する</button>
 					<a th:href="@{/}" class="btn btn-info btn-lg" id="back">ログイン画面に戻る</a>
