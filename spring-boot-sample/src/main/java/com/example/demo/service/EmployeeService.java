@@ -22,7 +22,7 @@ public class EmployeeService {
 		String employee_id = null;
 		
 		if(newEmployee == null) {
-			throw new NotFoundException("justttt");
+			throw new NotFoundException("not found");
 		} else if(!newEmployee.getPassword().contentEquals(password)) {
 			employee_id = "wrong";
 		} else if(newEmployee.getPassword().contentEquals(password)) {
