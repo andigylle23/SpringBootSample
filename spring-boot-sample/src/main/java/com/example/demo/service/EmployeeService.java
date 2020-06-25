@@ -4,7 +4,6 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.EmployeeRepo;
-import javassist.NotFoundException;
 
 
 @Service
@@ -16,20 +15,39 @@ public class EmployeeService {
 		this.employeeRepo = employeeRepo;
 	}
 	
-	
-	public String loginUser(String username, String password) throws NotFoundException {
-		Employee newEmployee = employeeRepo.findByUsername(username);
-		String employee_id = null;
+	public String checkUserNameExist(String username) {
+		String status = null;
 		
-		if(newEmployee == null) {
-			throw new NotFoundException("not found");
-		} else if(!newEmployee.getPassword().contentEquals(password)) {
-			employee_id = "wrong";
-		} else if(newEmployee.getPassword().contentEquals(password)) {
-			employee_id = newEmployee.getEmployeeId();
+		Employee employee = employeeRepo.findByUsername(username);
+		
+		if(employee == null) {
+			status = "not exists";
+		} else {
+			status = "exist";
 		}
 		
-		return employee_id;
+		return status;
+
+	}
+	
+	public String loginUser(String username, String password) {
+		
+		String status = checkUserNameExist(username);
+		String employee_stat = null;
+		
+		Employee employee = employeeRepo.findByUsername(username);
+		
+		if(status.contentEquals("not exists")) {
+			employee_stat = "not exists";
+		} else if(status.contentEquals("exist")) {
+			if(employee.getPassword().contentEquals(password)) {
+				employee_stat = employee.getEmployeeId();
+			} else if(!employee.getPassword().contentEquals(password)) {
+				employee_stat = "wrong password";
+			}
+		} 
+		
+		return employee_stat;
 	}
 	
 	public String registerEmployee(Employee employee) {

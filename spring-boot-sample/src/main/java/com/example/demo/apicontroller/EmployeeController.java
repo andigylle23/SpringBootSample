@@ -18,17 +18,17 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/login")
-	public String loginUser(@ModelAttribute("employee") Employee employee) throws NotFoundException  {
+	public String loginUser(@ModelAttribute("employee") Employee employee) {
 		
-		String exists = employeeService.loginUser(employee.getUsername(), employee.getPassword());
+		String status = employeeService.loginUser(employee.getUsername(), employee.getPassword());
+		String redirect = null;
 		
-		if(exists == null || exists.isEmpty()) {
-			return "redirect:/notfound";
-		} else if(exists.contains("wrong")) {
-			return "redirect:/notfound";
+		if(status.contentEquals("not exists") || status.contentEquals("wrong password")) {
+			redirect = "redirect:/";
+		} else {
+			redirect = "redirect:/home";
 		}
-		
-		return "redirect:/home";
+		return redirect;
 	}
 	
 	@PostMapping("/register")
