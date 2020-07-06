@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.model.Employee;
 import com.example.demo.service.EmployeeService;
 import javassist.NotFoundException;
+import javassist.expr.NewArray;
 
 @Controller
 public class PagesController {
@@ -24,14 +27,13 @@ public class PagesController {
 	
 	@GetMapping("/register")
 	public String goToRegistrationPage(Model model) {
-		Employee employee = new Employee();
-		model.addAttribute("employee",employee);
+		model.addAttribute("employee", new Employee());
 		return "registration";
 	}
 	
 	@GetMapping("/home")
 	public String goToHomePagePage() {
-		return "index";
+		return "home";
 	}
 	
 	@GetMapping("/notfound")

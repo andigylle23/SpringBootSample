@@ -6,41 +6,52 @@
 <!-- Jquery needs to be loaded first before the bootstrap  -->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link th:href="@{/css/login.css}" rel="stylesheet" />
 </head>
 <!------ Include the above in your HEAD tag ---------->
 <title>Registration</title>
 <body>
-<div class="container">
-		<div class="row">
-			<h2>ユーザー登録する</h2>
-			<div class="col-md-10">
-				<form action="#" th:action="@{/register}" method="post"
-					th:object="${employee}">
+	<div class="sidenav">
+		<div class="login-main-text">
+			<h2>
+				アプリケーション<br> 登録する画面
+			</h2>
+			<p>ログインまたは登録する</p>
+		</div>
+	</div>
+	<div class="main">
+		<div class="col-md-6 col-sm-12">
+			<div class="register-form">
+				<form id="register-form" class="form" action="#" th:action="@{/register}"
+					method="post" th:object="${employee}">
 					<div class="form-group">
-						<label for="title">Employee ID：</label> <input type="text"
-							class="form-control" id="password" th:field="*{employeeId}"
-							placeholder="Please input your employee Id">
+						<label>社員番号</label> <input type="text" class="form-control"
+							name="employeeId" id="employeeId" th:field="*{employeeId}"
+							placeholder="社員番号を入力してください">
 					</div>
 					<div class="form-group">
-						<label for="username">ユーザー名：</label> <input type="text"
-							class="form-control" id="username" th:field="*{username}"
+						<label>メールアドレス</label> <input type="text" class="form-control"
+							name="email" id="email" th:field="*{email}"
+							placeholder="メールアドレスを入力してください">
+					</div>
+					<div class="form-group">
+						<label>ユーザー名</label> <input type="text" class="form-control"
+							name="username" id="username" th:field="*{username}"
 							placeholder="ユーザー名を入力してください">
 					</div>
 					<div class="form-group">
-						<label for="password">パスポート：</label> <input type="password"
-							class="form-control" id="password" th:field="*{password}"
+						<label>パスワード</label> <input type="password" class="form-control"
+							name="password" id="password" th:field="*{password}"
 							placeholder="パスワードを入力してください">
 					</div>
-					<div class="form-group">
-						<label for="author">メールアドレス：</label> <input type="text"
-							class="form-control" id="email" th:field="*{email}"
-							placeholder="メールを入力してください">
-					</div>
-					<button type="submit" class="btn btn-primary" id="register">登録する</button>
-					<a th:href="@{/}" class="btn btn-info btn-lg" id="back">ログイン画面に戻る</a>
+					<button type="submit" class="btn btn-black">登録する</button>
+					<a type="button" th:href="@{/}" class="btn btn-secondary">ログインに戻る</a>
 				</form>
 			</div>
 		</div>

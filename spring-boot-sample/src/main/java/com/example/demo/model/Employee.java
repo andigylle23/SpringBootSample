@@ -6,7 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class Employee {
@@ -14,11 +20,26 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@NotBlank(message = "Employee Id should not be empty")
 	private String employeeId;
+	
+	@NotBlank
+	@Size(min = 4, max = 50)
 	private String username;
+	
+	@NotBlank
+	@Size(min = 8, max = 15)
 	private String password;
+	
+	@NotBlank
+	@Email(message = "Please enter a valid e-mail address")
 	private String email;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSZ")
 	private Date dateCreated;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm:ss.SSSZ")
 	private Date dateUpdated;
 	
 	// Getters

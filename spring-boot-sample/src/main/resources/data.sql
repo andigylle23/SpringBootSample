@@ -37,5 +37,5 @@ CREATE TABLE work_time_history (
   PRIMARY KEY (id)
 );
 
-INSERT INTO employee(employee_id, username, password, email, date_created, date_updated) VALUES ('3615', 'admin', '1234','kyrie@totaloa.co.jp',  now(), now());
+
 	
