@@ -5,104 +5,173 @@
 <!-- Jquery needs to be loaded first before the bootstrap  -->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 <link th:href="@{/css/home.css}" rel="stylesheet" />
 <script type="text/javascript" th:src="@{/js/home.js}"></script>
 <title>Home page</title>
 </head>
 <body>
-<div class="container">
-      <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <A href="edit.html" >Edit Profile</A>
+<div id="user" class="container profile" style="display: none;">
+  <div class="row">
+    <div class="col text-center mt-3">
+      <img alt="picture" v-bind:src="user.picture" class="img-lg rounded-circle border shadow" />
+      <h2 class="mt-3">{{ user.name }}</h2>
+    </div>
+  </div>
 
-        <A href="edit.html" >Logout</A>
-       <br>
-<p class=" text-info">May 05,2014,03:00 pm </p>
-      </div>
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-   
-   
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title">Sheena Shrestha</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
-                
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>Department:</td>
-                        <td>Programming</td>
-                      </tr>
-                      <tr>
-                        <td>Hire date:</td>
-                        <td>06/23/2013</td>
-                      </tr>
-                      <tr>
-                        <td>Date of Birth</td>
-                        <td>01/24/1988</td>
-                      </tr>
-                   
-                         <tr>
-                             <tr>
-                        <td>Gender</td>
-                        <td>Female</td>
-                      </tr>
-                        <tr>
-                        <td>Home Address</td>
-                        <td>Kathmandu,Nepal</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
-                      </tr>
-                        <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
-                        </td>
-                           
-                      </tr>
-                     
-                    </tbody>
-                  </table>
-                  
-                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
-                </div>
-              </div>
-            </div>
-                 <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                        <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                        </span>
-                    </div>
-            
-          </div>
+  <div class="row mt-2">
+    <div class="col">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="address-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="false">Address</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="links-tab" data-toggle="tab" href="#links" role="tab" aria-controls="links" aria-selected="false">Links</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <table class="table table-hover table-sm table-properties">
+            <tr v-show="user.sub">
+              <th>sub</th>
+              <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 20rem;">{{user.sub}}</td>
+            </tr>
+            <tr v-show="user.password">
+              <th>password</th>
+              <td>{{user.password}}</td>
+            </tr>
+            <tr v-show="user.uid">
+              <th>uid</th>
+              <td>{{user.uid}}</td>
+            </tr>
+            <tr v-show="user.nickname">
+              <th>nickname</th>
+              <td>{{user.nickname}}</td>
+            </tr>
+            <tr v-show="user.preferred_username">
+              <th>preferred username</th>
+              <td>{{user.preferred_username}}</td>
+            </tr>
+            <tr v-show="user.gender">
+              <th>gender</th>
+              <td>{{user.gender}}</td>
+            </tr>
+            <tr v-show="user.birthdate">
+              <th>birthdate</th>
+              <td>{{user.birthdate}}</td>
+            </tr>
+            <tr v-show="user.locale">
+              <th>locale</th>
+              <td>{{user.locale}}</td>
+            </tr>
+            <tr v-show="user.zoneinfo">
+              <th>zoneinfo</th>
+              <td>{{user.zoneinfo}}</td>
+            </tr>
+            <tr v-show="user.given_name">
+              <th>given name</th>
+              <td>{{user.given_name}}</td>
+            </tr>
+            <tr v-show="user.middle_name">
+              <th>middle name</th>
+              <td>{{user.middle_name}}</td>
+            </tr>
+            <tr v-show="user.family_name">
+              <th>family name</th>
+              <td>{{user.family_name}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          <table class="table table-hover table-sm table-properties">
+            <tr v-show="user.email">
+              <th>email</th>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr v-show="user.email_verified">
+              <th>email verified</th>
+              <td>{{user.email_verified}}</td>
+            </tr>
+            <tr v-show="user.phone_number">
+              <th>phone number</th>
+              <td>{{user.phone_number}}</td>
+            </tr>
+            <tr v-show="user.phone_number_verified">
+              <th>phone number verified</th>
+              <td>{{user.phone_number_verified}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
+          <table class="table table-hover table-sm table-properties">
+            <tr v-show="user.address.country">
+              <th>country</th>
+              <td>{{user.address.country}}</td>
+            </tr>
+            <tr v-show="user.address.postal_code">
+              <th>postal code</th>
+              <td>{{user.address.postal_code}}</td>
+            </tr>
+            <tr v-show="user.address.locality">
+              <th>locality</th>
+              <td>{{user.address.locality}}</td>
+            </tr>
+            <tr v-show="user.address.region">
+              <th>region</th>
+              <td>{{user.address.region}}</td>
+            </tr>
+            <tr v-show="user.address.street_address">
+              <th>street address</th>
+              <td>{{user.address.street_address}}</td>
+            </tr>
+            <tr v-show="user.address.formatted">
+              <th>formatted</th>
+              <td>{{user.address.formatted}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="tab-pane fade" id="links" role="tabpanel" aria-labelledby="links-tab">
+          <table class="table table-hover table-sm table-properties">
+            <tr v-show="user['@id']">
+              <th>@id</th>
+              <td><a v-bind:href="user['@id']">{{user["@id"]}}</a></td>
+            </tr>
+            <tr v-show="user.me">
+              <th>me</th>
+              <td><a v-bind:href="user.me">{{user.me}}</a></td>
+            </tr>
+            <tr v-show="user.website">
+              <th>website</th>
+              <td><a v-bind:href="user.website">{{user.website}}</a></td>
+            </tr>
+            <tr v-show="user.profile">
+              <th>profile</th>
+              <td><a v-bind:href="user.profile">{{user.profile}}</a></td>
+            </tr>
+            <tr v-show="user.webmail">
+              <th>webmail</th>
+              <td><a v-bind:href="user.webmail">{{user.webmail}}</a></td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
+  </div>
+</div>
 </body>
 </html>

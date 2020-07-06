@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,15 +36,15 @@ public class EmployeeController {
 
 
 	@PostMapping("/login")
-	public RedirectView loginUser(@ModelAttribute("employee") Employee employee) {
+	public ModelAndView loginUser(@ModelAttribute("employee") Employee employee, ModelMap model) {
 		
 		String status = employeeService.loginUser(employee.getUsername(), employee.getPassword());
 		String redirect = null;
-		
+		model.addAttribute("attribute", "login");
 		if(status.contentEquals("not exists") || status.contentEquals("wrong password")) {
-//			redirect = "redirect:/";
+			redirect = "redirect:/";
 		} else {
-//			return "redirect:/home"
+			return new ModelAndView("redirect:/home", model);
 		}
 //		return redirect;
 		return null;
